@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+
 export default defineConfig({
   plugins: [tailwindcss(), react()],
   server: {
@@ -9,6 +10,8 @@ export default defineConfig({
       '/bff-client': {
         target: 'http://dev.toolsdiscont.com',
         changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/bff-client/, '/bff-client')
       },
     },
   },

@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.btn-outline-light:hover {
+    background-color: #fba161 !important;
+    color: #000000 !important;
+    border-color: #606060 !important;
+  }
+
+  .nav-link:hover {
+    color: #fba161 !important;
+  }
