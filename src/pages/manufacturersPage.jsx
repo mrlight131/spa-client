@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useManufacturers } from '../hooks/useManufacturers.jsx';
+import Button from "../components/UI/button.jsx";
 
 export default function ManufacturersPage() {
   const location = useLocation();
@@ -47,29 +48,29 @@ export default function ManufacturersPage() {
       </main>
     );
   }
-
+//   style={{backgroundColor: '#2c3e50', fontFamily:'Montserrat, sans-serif'}}
+// style = {{color: 'white'}}
   return (
-    <main className="manufacturersPage container py-5">
-      <div className="row" style = {{marginTop: '5%'}}>
+    <section className="manufacturers-section py-5" style={{backgroundColor: '#2c3e50', fontFamily:'Montserrat, sans-serif', color: 'white', height: '100vh'}}>
+      <div className="row" style = {{margin: '5%'}}>
         <div className="col-12 mb-3">
-          <button 
-            className="btn btn-outline-secondary"
+          <Button 
             onClick={() => navigate('/')}
           >
             ← Назад к поиску
-          </button>
+          </Button>
         </div>
         <div className="col-12">
           <h2 className="mb-4">Производители оборудования</h2>
           
           {/* Информация о пагинации */}
           {pagination.totalElements > 0 && (
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <p className="text-muted mb-0">
+            <div className="d-flex justify-content-between align-items-center mb-3" >
+              <p className="text-white-muted mb-0">
                 Показано {((currentPage - 1) * pageSize) + 1}-{Math.min(currentPage * pageSize, pagination.totalElements)} из {pagination.totalElements} производителей
               </p>
               <div className="d-flex align-items-center gap-2">
-                <span className="text-muted">Показывать:</span>
+                <span className="text-white-muted">Показывать:</span>
                 <select 
                   className="form-select form-select-sm"
                   value={pageSize}
@@ -230,6 +231,6 @@ export default function ManufacturersPage() {
           )}
         </div>
       </div>
-    </main>
+    </section>
   );
 }

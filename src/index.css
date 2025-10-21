@@ -7,6 +7,11 @@
     border-color: #606060 !important;
   }
 
-  .nav-link:hover {
+.nav-link:hover {
     color: #fba161 !important;
+  }
+
+.text-white-muted {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
   }
