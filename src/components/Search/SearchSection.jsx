@@ -26,10 +26,30 @@ export default function SearchSection(){
     const handleSearch = () => {
         if (selectedSubcategory) {
             navigate(ROUTES.MANUFACTURERS, {
-                state: selectedSubcategory
+                state: {
+                    classId: selectedClass,
+                    categoryId: selectedCategory,
+                    subcategoryId: selectedSubcategory
+                }
+            });
+        } else if (selectedCategory) {
+            navigate(ROUTES.MANUFACTURERS, {
+                state: {
+                    classId: selectedClass,
+                    categoryId: selectedCategory,
+                    subcategoryId: null
+                }
+            });
+        } else if (selectedClass) {
+            navigate(ROUTES.MANUFACTURERS, {
+                state: {
+                    classId: selectedClass,
+                    categoryId: null,
+                    subcategoryId: null
+                }
             });
         } else {
-            alert('Не выбрана подкатегория')
+            alert('Выберите хотя бы класс оборудования')
         }
     }
 

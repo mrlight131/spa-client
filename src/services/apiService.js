@@ -50,10 +50,26 @@ export const apiService = {
     }
   },
 
-  async getManufacturers(subcategoryId) {
+  async getManufacturers(classId = null, categoryId = null, subcategoryId = null, page = 1, size = 10) {
     try {
-      const response = await fetch(`/bff-client/manufacturers/${subcategoryId}`);
-      // console.log(response);
+      const params = new URLSearchParams({
+        page: page.toString(),
+        size: size.toString()
+      });
+
+      let endpoint = '/bff-client/manufacturers';
+      
+      if (subcategoryId) {
+        endpoint += `/${subcategoryId}`;
+      } else if (categoryId) {
+        endpoint += `/${categoryId}`;
+      } else if (classId) {
+        endpoint += `/${classId}`;
+      } else {
+        throw new Error('Не указан ни один из параметров: classId, categoryId или subcategoryId');
+      }
+
+      const response = await fetch(`${endpoint}?${params}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
